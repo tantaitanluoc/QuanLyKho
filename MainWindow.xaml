@@ -4,8 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyKho"
+         xmlns:uc="clr-namespace:QuanLyKho.AppUC"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="Phần mềm quản lý kho" Height="450" Width="800"
+        x:Name="mainWindow"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
      TextElement.FontWeight="Regular"
@@ -15,9 +18,23 @@
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"
         DataContext="{StaticResource MainVM}"
+       ResizeMode="NoResize"
+        WindowStyle="None" WindowStartupLocation="CenterScreen"
         >
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding OnLoadedCMD}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
-        <materialDesign:Card Padding="32" Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:UC_ControlBar Tag="{Binding Title, ElementName=mainWindow}"></uc:UC_ControlBar>
+        </Grid>
+        <materialDesign:Card Padding="32" Margin="16" Grid.Row="1">
             <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}">My First Material Design App</TextBlock>
         </materialDesign:Card>
     </Grid>

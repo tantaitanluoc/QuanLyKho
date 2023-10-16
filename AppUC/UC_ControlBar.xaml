@@ -24,12 +24,6 @@
                      Margin="16 0 0 0" Text="{Binding Tag, ElementName=controlbar}">
                 </TextBlock>
                 <StackPanel Orientation="Horizontal" Background="Transparent" HorizontalAlignment="Right">
-                    <!--<StackPanel.Resources>
-                        <Style TargetType="Button">
-                            <Setter Property="Margin" Value="0 0 0 10"></Setter>
-                            <Setter Property="Width" Value="40"></Setter>
-                        </Style>
-                    </StackPanel.Resources>-->
                     <Button
 				            Content="{materialDesign:PackIcon WindowMinimize}"
                             Style="{StaticResource MaterialDesignFlatButton}"

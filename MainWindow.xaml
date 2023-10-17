@@ -7,7 +7,7 @@
          xmlns:uc="clr-namespace:QuanLyKho.AppUC"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
-        Title="Phần mềm quản lý kho" Height="450" Width="800"
+        Title="Phần mềm quản lý kho" Height="600" Width="800"
         x:Name="mainWindow"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -37,10 +37,11 @@
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition/>
             </Grid.RowDefinitions>
             <!--Menu-->
-            <Grid Grid.Row="0">
+            <Grid Grid.Row="0" Margin="5">
                 <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <Grid Background="Transparent" Margin="5 0 0 0">
                         <Grid.Resources>
@@ -60,7 +61,7 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Button Width="55" Padding="0 2 0 2" Grid.Column="0">
+                        <Button Width="60" Padding="0 2 0 2" Grid.Column="0">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
@@ -73,14 +74,14 @@
                                         />
                                 </Grid>
                                 <Grid Grid.Row="1">
-                                    <TextBlock FontSize="8" Margin="0 2 0 0">
+                                    <TextBlock FontSize="10" Margin="0 2 0 0">
                                         Nhập kho
                                     </TextBlock>
                                 </Grid>
                             </Grid>
 
                         </Button>
-                        <Button Width="55" Padding="0 2 0 2" Grid.Column="1">
+                        <Button Width="60" Padding="0 2 0 2" Grid.Column="1">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
@@ -93,14 +94,14 @@
                                         />
                                 </Grid>
                                 <Grid Grid.Row="1">
-                                    <TextBlock FontSize="8" Margin="0 2 0 0">
+                                    <TextBlock FontSize="10" Margin="0 2 0 0">
                                         Xuất kho
                                     </TextBlock>
                                 </Grid>
                             </Grid>
 
                         </Button>
-                        <Button Width="55" Padding="0 2 0 2" Grid.Column="2">
+                        <Button Width="60" Padding="0 2 0 2" Grid.Column="2">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
@@ -113,14 +114,14 @@
                                         />
                                 </Grid>
                                 <Grid Grid.Row="1">
-                                    <TextBlock FontSize="8" Margin="0 2 0 0">
+                                    <TextBlock FontSize="10" Margin="0 2 0 0">
                                         Vật tư
                                     </TextBlock>
                                 </Grid>
                             </Grid>
 
                         </Button>
-                        <Button Width="55" Padding="0 2 0 2" Grid.Column="3">
+                        <Button Width="60" Padding="0 2 0 2" Grid.Column="3">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
@@ -133,14 +134,14 @@
                                         />
                                 </Grid>
                                 <Grid Grid.Row="1">
-                                    <TextBlock FontSize="8" Margin="0 2 0 0">
+                                    <TextBlock FontSize="10" Margin="0 2 0 0">
                                         Đơn vị đo
                                     </TextBlock>
                                 </Grid>
                             </Grid>
 
                         </Button>
-                        <Button Width="55" Padding="0 2 0 2" Grid.Column="4">
+                        <Button Width="60" Padding="0 2 0 2" Grid.Column="4">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
@@ -153,14 +154,14 @@
                                         />
                                 </Grid>
                                 <Grid Grid.Row="1">
-                                    <TextBlock FontSize="8" Margin="0 2 0 0">
+                                    <TextBlock FontSize="10" Margin="0 2 0 0">
                                         Nhà CC
                                     </TextBlock>
                                 </Grid>
                             </Grid>
 
                         </Button>
-                        <Button Width="55" Padding="0 2 0 2" Grid.Column="5">
+                        <Button Width="60" Padding="0 2 0 2" Grid.Column="5">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
@@ -173,7 +174,7 @@
                                         />
                                 </Grid>
                                 <Grid Grid.Row="1">
-                                    <TextBlock FontSize="8" Margin="0 2 0 0">
+                                    <TextBlock FontSize="10" Margin="0 2 0 0">
                                         Khách hàng
                                     </TextBlock>
                                 </Grid>
@@ -184,33 +185,286 @@
                 </DockPanel>
             </Grid>
             <!--Main-->
-            <Grid Grid.Row="1"> 
+            <Grid Grid.Row="1">
+                <Separator Margin="5" Style="{StaticResource MaterialDesignDarkSeparator}"></Separator>
+            </Grid>
+            <Grid Grid.Row="2"> 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 <!--Filter-->
                 <Grid Grid.Row="0">
-                    <materialDesign:Card>
+                    <materialDesign:Card Margin="5">
                         <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
                             <Grid Grid.Row="0">
-                                
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <DatePicker
+                                         Width="130"
+                                         Margin="5 0 5 0"
+                                         materialDesign:HintAssist.Hint="Chọn ngày bắt đầu"
+                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
+                                        />
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <DatePicker
+                                         Width="130"
+                                        Margin="5 0 5 0"
+                                         materialDesign:HintAssist.Hint="Chọn ngày kết thúc"
+                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                </Grid>
+                                <Grid Grid.Column="2">
+                                    <Button Width="60" Padding="0 2 0 2" Grid.Column="5" Margin="5">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid Grid.Row="0">
+                                                <materialDesign:PackIcon
+                                        Kind="Filter" 
+                                        HorizontalAlignment="Center"
+                                        />
+                                            </Grid>
+                                            <Grid Grid.Row="1">
+                                                <TextBlock FontSize="10" Margin="0 2 0 0">
+                                        Lọc
+                                                </TextBlock>
+                                            </Grid>
+                                        </Grid>
+
+                                    </Button>
+                                </Grid>
                             </Grid>
                             <Grid Grid.Row="1">
-                                
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <materialDesign:Card
+                                        Background="#03a9f4"
+                                        Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+                                        Padding="0"
+                                        Margin="5"
+                                        Width="200">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition
+                                                    Height="Auto" />
+                                                <RowDefinition
+                                                    Height="Auto" />
+                                                <RowDefinition
+                                                    Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <TextBlock
+                                                Grid.Row="0"
+                                                Margin="16 16 16 4"
+                                                Style="{StaticResource MaterialDesignHeadline5TextBlock}">
+                                                Lượng nhập
+                                            </TextBlock>
+                                            <Separator
+                                                Grid.Row="1"
+                                                Style="{StaticResource MaterialDesignLightSeparator}" />
+                                            <TextBlock
+                                                Grid.Row="2"
+                                                Margin="16 0 16 8"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Left"
+                                                Style="{StaticResource MaterialDesignBody1TextBlock}">
+                                                9999999
+                                            </TextBlock>
+                                            <materialDesign:PopupBox Grid.Row="0"
+                                                    HorizontalAlignment="Right"
+                                                    Margin="16 16 0 4"
+                                                    Padding="2 0 2 0">
+                                                <StackPanel>
+                                                    <Button
+                                                            Content="More" />
+                                                    <Button
+                                                            Content="Options" />
+                                                </StackPanel>
+                                            </materialDesign:PopupBox>
+                                        </Grid>
+                                    </materialDesign:Card>
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <materialDesign:Card
+                                        Background="#03a9f4"
+                                        Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+                                        Padding="0"
+                                        Margin="5"
+                                        Width="200">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition
+                                                    Height="Auto" />
+                                                <RowDefinition
+                                                    Height="Auto" />
+                                                <RowDefinition
+                                                    Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <TextBlock
+                                                Grid.Row="0"
+                                                Margin="16 16 16 4"
+                                                Style="{StaticResource MaterialDesignHeadline5TextBlock}">
+                                                Lượng xuất
+                                            </TextBlock>
+                                            <Separator
+                                                Grid.Row="1"
+                                                Style="{StaticResource MaterialDesignLightSeparator}" />
+                                            <TextBlock
+                                                Grid.Row="2"
+                                                Margin="16 0 16 8"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Left"
+                                                Style="{StaticResource MaterialDesignBody1TextBlock}">
+                                                9999999
+                                            </TextBlock>
+                                            <materialDesign:PopupBox Grid.Row="0"
+                                                    HorizontalAlignment="Right"
+                                                    Margin="16 16 0 4"
+                                                    Padding="2 0 2 0">
+                                                <StackPanel>
+                                                    <Button
+                                                            Content="More" />
+                                                    <Button
+                                                            Content="Options" />
+                                                </StackPanel>
+                                            </materialDesign:PopupBox>
+                                        </Grid>
+                                    </materialDesign:Card>
+                                </Grid>
+                                <Grid Grid.Column="2">
+                                    <materialDesign:Card
+                                        Background="#03a9f4"
+                                        Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+                                        Padding="0"
+                                        Margin="5"
+                                        Width="200">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition
+                                                    Height="Auto" />
+                                                <RowDefinition
+                                                    Height="Auto" />
+                                                <RowDefinition
+                                                    Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <TextBlock
+                                                Grid.Row="0"
+                                                Margin="16 16 16 4"
+                                                Style="{StaticResource MaterialDesignHeadline5TextBlock}">
+                                                Tồn kho
+                                            </TextBlock>
+                                            <Separator
+                                                Grid.Row="1"
+                                                Style="{StaticResource MaterialDesignLightSeparator}" />
+                                            <TextBlock
+                                                Grid.Row="2"
+                                                Margin="16 0 16 8"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Left"
+                                                Style="{StaticResource MaterialDesignBody1TextBlock}">
+                                                9999999
+                                            </TextBlock>
+                                            <materialDesign:PopupBox Grid.Row="0"
+                                                    HorizontalAlignment="Right"
+                                                    Margin="16 16 0 4"
+                                                    Padding="2 0 2 0">
+                                                <StackPanel>
+                                                    <Button
+                                                            Content="More" />
+                                                    <Button
+                                                            Content="Options" />
+                                                </StackPanel>
+                                            </materialDesign:PopupBox>
+                                        </Grid>
+                                    </materialDesign:Card>
+                                </Grid>
                             </Grid>
                         </Grid>
                     </materialDesign:Card>
-                    
+
                 </Grid>
                 <!--List-->
-                <Grid Grid.Row="1">
-                    
-                </Grid>
+                <materialDesign:Card Grid.Row="1" Margin="5" VerticalAlignment="Stretch">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition  Width="auto"/>
+                                <ColumnDefinition  Width="auto"/>
+                                <ColumnDefinition  Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <DatePicker
+                                         Width="130"
+                                         Margin="5 0 5 0"
+                                         materialDesign:HintAssist.Hint="Chọn ngày bắt đầu"
+                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
+                                        />
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <DatePicker
+                                         Width="130"
+                                         Margin="5 0 5 0"
+                                         materialDesign:HintAssist.Hint="Chọn ngày kết thúc"
+                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <Button Width="60" Padding="0 2 0 2" Grid.Column="5" Margin="5">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                            <materialDesign:PackIcon
+                                        Kind="Filter" 
+                                        HorizontalAlignment="Center"
+                                        />
+                                        </Grid>
+                                        <Grid Grid.Row="1">
+                                            <TextBlock FontSize="10" Margin="0 2 0 0">
+                                        Lọc
+                                            </TextBlock>
+                                        </Grid>
+                                    </Grid>
+
+                                </Button>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Separator Margin="5" Style="{StaticResource MaterialDesignDarkSeparator}"></Separator>
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <ListView>
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="STT"></GridViewColumn>
+                                        <GridViewColumn Header="Tên vật tư"></GridViewColumn>
+                                        <GridViewColumn Header="Lượng tồn kho"></GridViewColumn>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </Grid>
+                    </Grid>
+                </materialDesign:Card>
             </Grid>
         </Grid>
     </Grid>

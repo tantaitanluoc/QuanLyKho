@@ -4,11 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyKho"
-         xmlns:uc="clr-namespace:QuanLyKho.AppUC"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         Title="Phần mềm quản lý kho" Height="600" Width="800"
         x:Name="mainWindow"
+        
+         xmlns:uc="clr-namespace:QuanLyKho.AppUC"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
      TextElement.FontWeight="Regular"
@@ -20,6 +21,7 @@
         DataContext="{StaticResource MainVM}"
        ResizeMode="NoResize"
         WindowStyle="None" WindowStartupLocation="CenterScreen"
+        
         >
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
@@ -60,8 +62,9 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
+                            <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Button Width="60" Padding="0 2 0 2" Grid.Column="0">
+                        <Button Width="auto" Padding="0 2 0 2" Grid.Column="0" Margin="5 0 5 0">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
@@ -81,7 +84,7 @@
                             </Grid>
 
                         </Button>
-                        <Button Width="60" Padding="0 2 0 2" Grid.Column="1">
+                        <Button Width="auto" Padding="0 2 0 2" Grid.Column="1" Margin="5 0 5 0">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
@@ -101,7 +104,7 @@
                             </Grid>
 
                         </Button>
-                        <Button Width="60" Padding="0 2 0 2" Grid.Column="2">
+                        <Button Width="auto" Padding="0 2 0 2" Grid.Column="2" Margin="5 0 5 0">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
@@ -121,7 +124,7 @@
                             </Grid>
 
                         </Button>
-                        <Button Width="60" Padding="0 2 0 2" Grid.Column="3">
+                        <Button Width="auto" Padding="0 2 0 2" Grid.Column="3" Margin="5 0 5 0" Command="{Binding UnitCMD}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
@@ -141,7 +144,7 @@
                             </Grid>
 
                         </Button>
-                        <Button Width="60" Padding="0 2 0 2" Grid.Column="4">
+                        <Button Width="auto" Padding="0 2 0 2" Grid.Column="4" Margin="5 0 5 0" Command="{Binding SupplierCMD}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
@@ -161,7 +164,7 @@
                             </Grid>
 
                         </Button>
-                        <Button Width="60" Padding="0 2 0 2" Grid.Column="5">
+                        <Button Width="auto" Padding="0 2 0 2" Grid.Column="5" Margin="5 0 5 0" Command="{Binding CustomerCMD}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
@@ -176,6 +179,26 @@
                                 <Grid Grid.Row="1">
                                     <TextBlock FontSize="10" Margin="0 2 0 0">
                                         Khách hàng
+                                    </TextBlock>
+                                </Grid>
+                            </Grid>
+
+                        </Button>
+                        <Button Width="auto" Padding="0 2 0 2" Grid.Column="6" Margin="5 0 5 0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0">
+                                    <materialDesign:PackIcon
+                                        Kind="Account" 
+                                        HorizontalAlignment="Center"
+                                        />
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <TextBlock FontSize="10" Margin="0 2 0 0">
+                                        Tài khoản
                                     </TextBlock>
                                 </Grid>
                             </Grid>

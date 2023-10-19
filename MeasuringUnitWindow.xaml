@@ -40,7 +40,7 @@
                     <TextBox
                         Margin="5"
                         materialDesign:HintAssist.Hint="Tên đơn vị đo"
-                        Text="{Binding unitName}"
+                        Text="{Binding unitName, UpdateSourceTrigger=PropertyChanged}"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 </Grid>
             </materialDesign:Card>

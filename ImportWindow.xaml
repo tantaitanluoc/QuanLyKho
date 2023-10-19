@@ -1,11 +1,11 @@
-﻿<Window x:Class="QuanLyKho.SupplierWindow"
+﻿<Window x:Class="QuanLyKho.ImportWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyKho"
         mc:Ignorable="d"
-        Title="Nhà cung cấp" Height="600" Width="800"
+        Title="Nhập kho" Height="600" Width="800"
         x:Name="window"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:uc="clr-namespace:QuanLyKho.AppUC"
@@ -39,39 +39,38 @@
                 <WrapPanel>
                     <TextBox
                         Margin="5 5 15 5"
-                        materialDesign:HintAssist.Hint="Tên nhà cung cấp"
-                       
-                        Text="{Binding supplierName, UpdateSourceTrigger=PropertyChanged}"
-                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    <TextBox
-                        Margin="5 5 15 5"
-                        materialDesign:HintAssist.Hint="Địa chỉ"
-                        
-                        Text="{Binding address, UpdateSourceTrigger=PropertyChanged}"
-                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    <TextBox
-                        Margin="5 5 15 5"
-                        materialDesign:HintAssist.Hint="Số điện thoại"
-                        
-                        Text="{Binding phoneNo, UpdateSourceTrigger=PropertyChanged}"
-                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    <TextBox
-                        Margin="5 5 15 5"
-                        materialDesign:HintAssist.Hint="Email"
-                        
-                        Text="{Binding email, UpdateSourceTrigger=PropertyChanged}"
+                        materialDesign:HintAssist.Hint="Tên vật tư"
+                        Text="{Binding materialName, UpdateSourceTrigger=PropertyChanged}"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     <DatePicker
                         Margin="5 5 15 5"
                         
-                        SelectedDate="{Binding contractDate}"
-                        materialDesign:HintAssist.Hint="Ngày hợp tác"
+                        SelectedDate="{Binding importDate}"
+                        materialDesign:HintAssist.Hint="Ngày nhập"
                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                     <TextBox
                         Margin="5 5 15 5"
-                        materialDesign:HintAssist.Hint="Thông tin thêm"
+                        materialDesign:HintAssist.Hint="Số lượng"
                         
-                        Text="{Binding moreInfo, UpdateSourceTrigger=PropertyChanged}"
+                        Text="{Binding count, UpdateSourceTrigger=PropertyChanged}"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox
+                        Margin="5 5 15 5"
+                        materialDesign:HintAssist.Hint="Giá nhập"
+                        
+                        Text="{Binding imprice, UpdateSourceTrigger=PropertyChanged}"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox
+                        Margin="5 5 15 5"
+                        materialDesign:HintAssist.Hint="Giá xuất"
+                        
+                        Text="{Binding exprice, UpdateSourceTrigger=PropertyChanged}"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox
+                        Margin="5 5 15 5"
+                        materialDesign:HintAssist.Hint="Trạng thái nhập"
+                        
+                        Text="{Binding status, UpdateSourceTrigger=PropertyChanged}"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 </WrapPanel>
             </materialDesign:Card>
@@ -121,12 +120,12 @@
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="ID" DisplayMemberBinding="{Binding id}"/>
-                                <GridViewColumn Header="Tên NCC" DisplayMemberBinding="{Binding supplierName}"/>
-                                <GridViewColumn Header="Địa chỉ" DisplayMemberBinding="{Binding address}"/>
-                                <GridViewColumn Header="Số điện thoại" DisplayMemberBinding="{Binding phoneNo}"/>
-                                <GridViewColumn Header="Email" DisplayMemberBinding="{Binding email}"/>
-                                <GridViewColumn Header="Ngày hợp tác" DisplayMemberBinding="{Binding contractDate}"/>
-                                <GridViewColumn Header="Thông tin thêm" DisplayMemberBinding="{Binding moreInfo}"/>
+                                <GridViewColumn Header="Tên vật tư" DisplayMemberBinding="{Binding Material.materialName}"/>
+                                <GridViewColumn Header="Ngày nhập" DisplayMemberBinding="{Binding Import.dateImport}"/>
+                                <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding count}"/>
+                                <GridViewColumn Header="Giá nhập" DisplayMemberBinding="{Binding imprice}"/>
+                                <GridViewColumn Header="Giá xuất" DisplayMemberBinding="{Binding exprice}"/>
+                                <GridViewColumn Header="Trạng thái nhập" DisplayMemberBinding="{Binding status}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>

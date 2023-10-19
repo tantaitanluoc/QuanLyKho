@@ -41,25 +41,25 @@
                         Margin="5 5 15 5"
                         materialDesign:HintAssist.Hint="Tên khách hàng"
                        
-                        Text="{Binding customerName}"
+                        Text="{Binding customerName, UpdateSourceTrigger=PropertyChanged}"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     <TextBox
                         Margin="5 5 15 5"
                         materialDesign:HintAssist.Hint="Địa chỉ"
                         
-                        Text="{Binding address}"
+                        Text="{Binding address, UpdateSourceTrigger=PropertyChanged}"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     <TextBox
                         Margin="5 5 15 5"
                         materialDesign:HintAssist.Hint="Số điện thoại"
                         
-                        Text="{Binding phoneNo}"
+                        Text="{Binding phoneNo, UpdateSourceTrigger=PropertyChanged}"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     <TextBox
                         Margin="5 5 15 5"
                         materialDesign:HintAssist.Hint="Email"
                         
-                        Text="{Binding email}"
+                        Text="{Binding email, UpdateSourceTrigger=PropertyChanged}"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     <DatePicker
                         Margin="5 5 15 5"
@@ -71,7 +71,7 @@
                         Margin="5 5 15 5"
                         materialDesign:HintAssist.Hint="Thông tin thêm"
                         
-                        Text="{Binding moreInfo}"
+                        Text="{Binding moreInfo, UpdateSourceTrigger=PropertyChanged}"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 </WrapPanel>
             </materialDesign:Card>

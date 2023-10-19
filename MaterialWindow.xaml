@@ -1,11 +1,11 @@
-﻿<Window x:Class="QuanLyKho.SupplierWindow"
+﻿<Window x:Class="QuanLyKho.MaterialWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyKho"
         mc:Ignorable="d"
-        Title="Nhà cung cấp" Height="600" Width="800"
+        Title="Vật tư" Height="600" Width="800"
         x:Name="window"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:uc="clr-namespace:QuanLyKho.AppUC"
@@ -39,39 +39,36 @@
                 <WrapPanel>
                     <TextBox
                         Margin="5 5 15 5"
-                        materialDesign:HintAssist.Hint="Tên nhà cung cấp"
-                       
-                        Text="{Binding supplierName, UpdateSourceTrigger=PropertyChanged}"
+                        materialDesign:HintAssist.Hint="Tên vật tư"
+                        Text="{Binding materialName, UpdateSourceTrigger=PropertyChanged}"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <ComboBox
+                        materialDesign:HintAssist.Hint="Đơn vị tính"
+                        Margin="5 5 15 5"
+                        IsEditable="True"
+                        ItemsSource="{Binding measuringUnit}"
+                        SelectedItem="{Binding selectedUnit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                    </ComboBox>
+                    <ComboBox
+                        materialDesign:HintAssist.Hint="Nhà cung cấp"
+                        Margin="5 5 15 5"
+                        IsEditable="True"
+                        ItemsSource="{Binding supplier}"
+                        SelectedItem="{Binding selectedSupplier, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                    </ComboBox>
+                    <TextBox
+                        Margin="5 5 15 5"
+                        materialDesign:HintAssist.Hint="QR Code"
+                        
+                        Text="{Binding qrCode, UpdateSourceTrigger=PropertyChanged}"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     <TextBox
                         Margin="5 5 15 5"
-                        materialDesign:HintAssist.Hint="Địa chỉ"
+                        materialDesign:HintAssist.Hint="Barcode"
                         
-                        Text="{Binding address, UpdateSourceTrigger=PropertyChanged}"
-                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    <TextBox
-                        Margin="5 5 15 5"
-                        materialDesign:HintAssist.Hint="Số điện thoại"
-                        
-                        Text="{Binding phoneNo, UpdateSourceTrigger=PropertyChanged}"
-                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    <TextBox
-                        Margin="5 5 15 5"
-                        materialDesign:HintAssist.Hint="Email"
-                        
-                        Text="{Binding email, UpdateSourceTrigger=PropertyChanged}"
-                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    <DatePicker
-                        Margin="5 5 15 5"
-                        
-                        SelectedDate="{Binding contractDate}"
-                        materialDesign:HintAssist.Hint="Ngày hợp tác"
-                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-                    <TextBox
-                        Margin="5 5 15 5"
-                        materialDesign:HintAssist.Hint="Thông tin thêm"
-                        
-                        Text="{Binding moreInfo, UpdateSourceTrigger=PropertyChanged}"
+                        Text="{Binding barcode, UpdateSourceTrigger=PropertyChanged}"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 </WrapPanel>
             </materialDesign:Card>
@@ -121,12 +118,11 @@
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="ID" DisplayMemberBinding="{Binding id}"/>
-                                <GridViewColumn Header="Tên NCC" DisplayMemberBinding="{Binding supplierName}"/>
-                                <GridViewColumn Header="Địa chỉ" DisplayMemberBinding="{Binding address}"/>
-                                <GridViewColumn Header="Số điện thoại" DisplayMemberBinding="{Binding phoneNo}"/>
-                                <GridViewColumn Header="Email" DisplayMemberBinding="{Binding email}"/>
-                                <GridViewColumn Header="Ngày hợp tác" DisplayMemberBinding="{Binding contractDate}"/>
-                                <GridViewColumn Header="Thông tin thêm" DisplayMemberBinding="{Binding moreInfo}"/>
+                                <GridViewColumn Header="Tên vật tư" DisplayMemberBinding="{Binding materialName}"/>
+                                <GridViewColumn Header="Đơn vị tính" DisplayMemberBinding="{Binding MeasuringUnit.measuringUnit}"/>
+                                <GridViewColumn Header="Nhà CC" DisplayMemberBinding="{Binding Supplier.supplierName}"/>
+                                <GridViewColumn Header="QR Code" DisplayMemberBinding="{Binding qrCode}"/>
+                                <GridViewColumn Header="Barcode" DisplayMemberBinding="{Binding barCode}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>

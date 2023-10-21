@@ -1,0 +1,635 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QuanLyKhoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userName" Type="nvarchar" MaxLength="1000" />
+          <Property Name="displayName" Type="nvarchar" MaxLength="500" />
+          <Property Name="password" Type="nvarchar(max)" />
+          <Property Name="roleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccountRole">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="roleDescription" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="1000" />
+          <Property Name="addrs" Type="nvarchar" MaxLength="1000" />
+          <Property Name="phoneNo" Type="nvarchar" MaxLength="15" />
+          <Property Name="email" Type="nvarchar" MaxLength="500" />
+          <Property Name="moreInfo" Type="nvarchar" MaxLength="1000" />
+          <Property Name="contractDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Export">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="exportDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ExportInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="materialId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="exportId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="customerId" Type="int" Nullable="false" />
+          <Property Name="count" Type="int" />
+          <Property Name="status" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Import">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="importDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ImportInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="materialId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="importId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="count" Type="int" />
+          <Property Name="imPrice" Type="float" />
+          <Property Name="exPrice" Type="float" />
+          <Property Name="status" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="1000" />
+          <Property Name="unitId" Type="int" Nullable="false" />
+          <Property Name="supplierId" Type="int" Nullable="false" />
+          <Property Name="qrCode" Type="nvarchar(max)" />
+          <Property Name="barcode" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="MeasuringUnit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="unit" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="1000" />
+          <Property Name="addrs" Type="nvarchar" MaxLength="1000" />
+          <Property Name="phoneNo" Type="nvarchar" MaxLength="15" />
+          <Property Name="email" Type="nvarchar" MaxLength="500" />
+          <Property Name="moreInfo" Type="nvarchar" MaxLength="1000" />
+          <Property Name="contractDate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__Account__roleId__164452B1">
+          <End Role="AccountRole" Type="Self.AccountRole" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountRole">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="roleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExportInf__custo__2B3F6F97">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="ExportInfo" Type="Self.ExportInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ExportInfo">
+              <PropertyRef Name="customerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExportInf__expor__2C3393D0">
+          <End Role="Export" Type="Self.Export" Multiplicity="1" />
+          <End Role="ExportInfo" Type="Self.ExportInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Export">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ExportInfo">
+              <PropertyRef Name="exportId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExportInf__statu__2A4B4B5E">
+          <End Role="Material" Type="Self.Material" Multiplicity="1" />
+          <End Role="ExportInfo" Type="Self.ExportInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ExportInfo">
+              <PropertyRef Name="materialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ImportInf__impor__21B6055D">
+          <End Role="Import" Type="Self.Import" Multiplicity="1" />
+          <End Role="ImportInfo" Type="Self.ImportInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Import">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ImportInfo">
+              <PropertyRef Name="importId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ImportInf__statu__20C1E124">
+          <End Role="Material" Type="Self.Material" Multiplicity="1" />
+          <End Role="ImportInfo" Type="Self.ImportInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ImportInfo">
+              <PropertyRef Name="materialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Material__barcod__0CBAE877">
+          <End Role="MeasuringUnit" Type="Self.MeasuringUnit" Multiplicity="1" />
+          <End Role="Material" Type="Self.Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MeasuringUnit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Material">
+              <PropertyRef Name="unitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Material__suppli__0DAF0CB0">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Material" Type="Self.Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Material">
+              <PropertyRef Name="supplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QuanLyKhoModelStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountRole" EntityType="Self.AccountRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Export" EntityType="Self.Export" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExportInfo" EntityType="Self.ExportInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Import" EntityType="Self.Import" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImportInfo" EntityType="Self.ImportInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Material" EntityType="Self.Material" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MeasuringUnit" EntityType="Self.MeasuringUnit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Account__roleId__164452B1" Association="Self.FK__Account__roleId__164452B1">
+            <End Role="AccountRole" EntitySet="AccountRole" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExportInf__custo__2B3F6F97" Association="Self.FK__ExportInf__custo__2B3F6F97">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="ExportInfo" EntitySet="ExportInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExportInf__expor__2C3393D0" Association="Self.FK__ExportInf__expor__2C3393D0">
+            <End Role="Export" EntitySet="Export" />
+            <End Role="ExportInfo" EntitySet="ExportInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExportInf__statu__2A4B4B5E" Association="Self.FK__ExportInf__statu__2A4B4B5E">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="ExportInfo" EntitySet="ExportInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ImportInf__impor__21B6055D" Association="Self.FK__ImportInf__impor__21B6055D">
+            <End Role="Import" EntitySet="Import" />
+            <End Role="ImportInfo" EntitySet="ImportInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ImportInf__statu__20C1E124" Association="Self.FK__ImportInf__statu__20C1E124">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="ImportInfo" EntitySet="ImportInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Material__barcod__0CBAE877" Association="Self.FK__Material__barcod__0CBAE877">
+            <End Role="MeasuringUnit" EntitySet="MeasuringUnit" />
+            <End Role="Material" EntitySet="Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Material__suppli__0DAF0CB0" Association="Self.FK__Material__suppli__0DAF0CB0">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Material" EntitySet="Material" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QuanLyKhoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="QuanLyKhoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="QuanLyKhoModel.Account" />
+          <EntitySet Name="AccountRoles" EntityType="QuanLyKhoModel.AccountRole" />
+          <EntitySet Name="Customers" EntityType="QuanLyKhoModel.Customer" />
+          <EntitySet Name="Exports" EntityType="QuanLyKhoModel.Export" />
+          <EntitySet Name="ExportInfoes" EntityType="QuanLyKhoModel.ExportInfo" />
+          <EntitySet Name="Imports" EntityType="QuanLyKhoModel.Import" />
+          <EntitySet Name="ImportInfoes" EntityType="QuanLyKhoModel.ImportInfo" />
+          <EntitySet Name="Materials" EntityType="QuanLyKhoModel.Material" />
+          <EntitySet Name="MeasuringUnits" EntityType="QuanLyKhoModel.MeasuringUnit" />
+          <EntitySet Name="Suppliers" EntityType="QuanLyKhoModel.Supplier" />
+          <AssociationSet Name="FK__Account__roleId__164452B1" Association="QuanLyKhoModel.FK__Account__roleId__164452B1">
+            <End Role="AccountRole" EntitySet="AccountRoles" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExportInf__custo__2B3F6F97" Association="QuanLyKhoModel.FK__ExportInf__custo__2B3F6F97">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="ExportInfo" EntitySet="ExportInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExportInf__expor__2C3393D0" Association="QuanLyKhoModel.FK__ExportInf__expor__2C3393D0">
+            <End Role="Export" EntitySet="Exports" />
+            <End Role="ExportInfo" EntitySet="ExportInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExportInf__statu__2A4B4B5E" Association="QuanLyKhoModel.FK__ExportInf__statu__2A4B4B5E">
+            <End Role="Material" EntitySet="Materials" />
+            <End Role="ExportInfo" EntitySet="ExportInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ImportInf__impor__21B6055D" Association="QuanLyKhoModel.FK__ImportInf__impor__21B6055D">
+            <End Role="Import" EntitySet="Imports" />
+            <End Role="ImportInfo" EntitySet="ImportInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ImportInf__statu__20C1E124" Association="QuanLyKhoModel.FK__ImportInf__statu__20C1E124">
+            <End Role="Material" EntitySet="Materials" />
+            <End Role="ImportInfo" EntitySet="ImportInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Material__barcod__0CBAE877" Association="QuanLyKhoModel.FK__Material__barcod__0CBAE877">
+            <End Role="MeasuringUnit" EntitySet="MeasuringUnits" />
+            <End Role="Material" EntitySet="Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Material__suppli__0DAF0CB0" Association="QuanLyKhoModel.FK__Material__suppli__0DAF0CB0">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="Material" EntitySet="Materials" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userName" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="displayName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="roleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AccountRole" Relationship="QuanLyKhoModel.FK__Account__roleId__164452B1" FromRole="Account" ToRole="AccountRole" />
+        </EntityType>
+        <EntityType Name="AccountRole">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="roleDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Accounts" Relationship="QuanLyKhoModel.FK__Account__roleId__164452B1" FromRole="AccountRole" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="addrs" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="phoneNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="moreInfo" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="contractDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ExportInfoes" Relationship="QuanLyKhoModel.FK__ExportInf__custo__2B3F6F97" FromRole="Customer" ToRole="ExportInfo" />
+        </EntityType>
+        <EntityType Name="Export">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="exportDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ExportInfoes" Relationship="QuanLyKhoModel.FK__ExportInf__expor__2C3393D0" FromRole="Export" ToRole="ExportInfo" />
+        </EntityType>
+        <EntityType Name="ExportInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="materialId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="exportId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="customerId" Type="Int32" Nullable="false" />
+          <Property Name="count" Type="Int32" />
+          <Property Name="status" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customer" Relationship="QuanLyKhoModel.FK__ExportInf__custo__2B3F6F97" FromRole="ExportInfo" ToRole="Customer" />
+          <NavigationProperty Name="Export" Relationship="QuanLyKhoModel.FK__ExportInf__expor__2C3393D0" FromRole="ExportInfo" ToRole="Export" />
+          <NavigationProperty Name="Material" Relationship="QuanLyKhoModel.FK__ExportInf__statu__2A4B4B5E" FromRole="ExportInfo" ToRole="Material" />
+        </EntityType>
+        <EntityType Name="Import">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="importDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ImportInfoes" Relationship="QuanLyKhoModel.FK__ImportInf__impor__21B6055D" FromRole="Import" ToRole="ImportInfo" />
+        </EntityType>
+        <EntityType Name="ImportInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="materialId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="importId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="count" Type="Int32" />
+          <Property Name="imPrice" Type="Double" />
+          <Property Name="exPrice" Type="Double" />
+          <Property Name="status" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Import" Relationship="QuanLyKhoModel.FK__ImportInf__impor__21B6055D" FromRole="ImportInfo" ToRole="Import" />
+          <NavigationProperty Name="Material" Relationship="QuanLyKhoModel.FK__ImportInf__statu__20C1E124" FromRole="ImportInfo" ToRole="Material" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="unitId" Type="Int32" Nullable="false" />
+          <Property Name="supplierId" Type="Int32" Nullable="false" />
+          <Property Name="qrCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="barcode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ExportInfoes" Relationship="QuanLyKhoModel.FK__ExportInf__statu__2A4B4B5E" FromRole="Material" ToRole="ExportInfo" />
+          <NavigationProperty Name="ImportInfoes" Relationship="QuanLyKhoModel.FK__ImportInf__statu__20C1E124" FromRole="Material" ToRole="ImportInfo" />
+          <NavigationProperty Name="MeasuringUnit" Relationship="QuanLyKhoModel.FK__Material__barcod__0CBAE877" FromRole="Material" ToRole="MeasuringUnit" />
+          <NavigationProperty Name="Supplier" Relationship="QuanLyKhoModel.FK__Material__suppli__0DAF0CB0" FromRole="Material" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="MeasuringUnit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="unit" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Materials" Relationship="QuanLyKhoModel.FK__Material__barcod__0CBAE877" FromRole="MeasuringUnit" ToRole="Material" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="addrs" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="phoneNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="moreInfo" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="contractDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Materials" Relationship="QuanLyKhoModel.FK__Material__suppli__0DAF0CB0" FromRole="Supplier" ToRole="Material" />
+        </EntityType>
+        <Association Name="FK__Account__roleId__164452B1">
+          <End Type="QuanLyKhoModel.AccountRole" Role="AccountRole" Multiplicity="1" />
+          <End Type="QuanLyKhoModel.Account" Role="Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountRole">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="roleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExportInf__custo__2B3F6F97">
+          <End Type="QuanLyKhoModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="QuanLyKhoModel.ExportInfo" Role="ExportInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ExportInfo">
+              <PropertyRef Name="customerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExportInf__expor__2C3393D0">
+          <End Type="QuanLyKhoModel.Export" Role="Export" Multiplicity="1" />
+          <End Type="QuanLyKhoModel.ExportInfo" Role="ExportInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Export">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ExportInfo">
+              <PropertyRef Name="exportId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExportInf__statu__2A4B4B5E">
+          <End Type="QuanLyKhoModel.Material" Role="Material" Multiplicity="1" />
+          <End Type="QuanLyKhoModel.ExportInfo" Role="ExportInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ExportInfo">
+              <PropertyRef Name="materialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ImportInf__impor__21B6055D">
+          <End Type="QuanLyKhoModel.Import" Role="Import" Multiplicity="1" />
+          <End Type="QuanLyKhoModel.ImportInfo" Role="ImportInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Import">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ImportInfo">
+              <PropertyRef Name="importId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ImportInf__statu__20C1E124">
+          <End Type="QuanLyKhoModel.Material" Role="Material" Multiplicity="1" />
+          <End Type="QuanLyKhoModel.ImportInfo" Role="ImportInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ImportInfo">
+              <PropertyRef Name="materialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Material__barcod__0CBAE877">
+          <End Type="QuanLyKhoModel.MeasuringUnit" Role="MeasuringUnit" Multiplicity="1" />
+          <End Type="QuanLyKhoModel.Material" Role="Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MeasuringUnit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Material">
+              <PropertyRef Name="unitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Material__suppli__0DAF0CB0">
+          <End Type="QuanLyKhoModel.Supplier" Role="Supplier" Multiplicity="1" />
+          <End Type="QuanLyKhoModel.Material" Role="Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Material">
+              <PropertyRef Name="supplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QuanLyKhoModelStoreContainer" CdmEntityContainer="QuanLyKhoEntities">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="QuanLyKhoModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="roleId" ColumnName="roleId" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="displayName" ColumnName="displayName" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountRoles">
+            <EntityTypeMapping TypeName="QuanLyKhoModel.AccountRole">
+              <MappingFragment StoreEntitySet="AccountRole">
+                <ScalarProperty Name="roleDescription" ColumnName="roleDescription" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="QuanLyKhoModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="contractDate" ColumnName="contractDate" />
+                <ScalarProperty Name="moreInfo" ColumnName="moreInfo" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phoneNo" ColumnName="phoneNo" />
+                <ScalarProperty Name="addrs" ColumnName="addrs" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exports">
+            <EntityTypeMapping TypeName="QuanLyKhoModel.Export">
+              <MappingFragment StoreEntitySet="Export">
+                <ScalarProperty Name="exportDate" ColumnName="exportDate" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExportInfoes">
+            <EntityTypeMapping TypeName="QuanLyKhoModel.ExportInfo">
+              <MappingFragment StoreEntitySet="ExportInfo">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="customerId" ColumnName="customerId" />
+                <ScalarProperty Name="exportId" ColumnName="exportId" />
+                <ScalarProperty Name="materialId" ColumnName="materialId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Imports">
+            <EntityTypeMapping TypeName="QuanLyKhoModel.Import">
+              <MappingFragment StoreEntitySet="Import">
+                <ScalarProperty Name="importDate" ColumnName="importDate" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImportInfoes">
+            <EntityTypeMapping TypeName="QuanLyKhoModel.ImportInfo">
+              <MappingFragment StoreEntitySet="ImportInfo">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="exPrice" ColumnName="exPrice" />
+                <ScalarProperty Name="imPrice" ColumnName="imPrice" />
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="importId" ColumnName="importId" />
+                <ScalarProperty Name="materialId" ColumnName="materialId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materials">
+            <EntityTypeMapping TypeName="QuanLyKhoModel.Material">
+              <MappingFragment StoreEntitySet="Material">
+                <ScalarProperty Name="barcode" ColumnName="barcode" />
+                <ScalarProperty Name="qrCode" ColumnName="qrCode" />
+                <ScalarProperty Name="supplierId" ColumnName="supplierId" />
+                <ScalarProperty Name="unitId" ColumnName="unitId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MeasuringUnits">
+            <EntityTypeMapping TypeName="QuanLyKhoModel.MeasuringUnit">
+              <MappingFragment StoreEntitySet="MeasuringUnit">
+                <ScalarProperty Name="unit" ColumnName="unit" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="QuanLyKhoModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="contractDate" ColumnName="contractDate" />
+                <ScalarProperty Name="moreInfo" ColumnName="moreInfo" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phoneNo" ColumnName="phoneNo" />
+                <ScalarProperty Name="addrs" ColumnName="addrs" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2ab215307d024176952f8a1d164eff10" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="QuanLyKhoModel.Account" Width="1.5" PointX="8" PointY="7.875" />
+        <EntityTypeShape EntityType="QuanLyKhoModel.AccountRole" Width="1.5" PointX="5.75" PointY="8.125" />
+        <EntityTypeShape EntityType="QuanLyKhoModel.Customer" Width="1.5" PointX="3" PointY="8.125" />
+        <EntityTypeShape EntityType="QuanLyKhoModel.Export" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="QuanLyKhoModel.ExportInfo" Width="1.5" PointX="5.25" PointY="3.875" />
+        <EntityTypeShape EntityType="QuanLyKhoModel.Import" Width="1.5" PointX="6" PointY="1.375" />
+        <EntityTypeShape EntityType="QuanLyKhoModel.ImportInfo" Width="1.5" PointX="8.25" PointY="3.875" />
+        <EntityTypeShape EntityType="QuanLyKhoModel.Material" Width="1.5" PointX="3" PointY="3.75" />
+        <EntityTypeShape EntityType="QuanLyKhoModel.MeasuringUnit" Width="1.5" PointX="0.75" PointY="4.375" />
+        <EntityTypeShape EntityType="QuanLyKhoModel.Supplier" Width="1.5" PointX="0.75" PointY="0.875" />
+        <AssociationConnector Association="QuanLyKhoModel.FK__Account__roleId__164452B1" />
+        <AssociationConnector Association="QuanLyKhoModel.FK__ExportInf__custo__2B3F6F97" />
+        <AssociationConnector Association="QuanLyKhoModel.FK__ExportInf__expor__2C3393D0" />
+        <AssociationConnector Association="QuanLyKhoModel.FK__ExportInf__statu__2A4B4B5E" />
+        <AssociationConnector Association="QuanLyKhoModel.FK__ImportInf__impor__21B6055D" />
+        <AssociationConnector Association="QuanLyKhoModel.FK__ImportInf__statu__20C1E124" />
+        <AssociationConnector Association="QuanLyKhoModel.FK__Material__barcod__0CBAE877" />
+        <AssociationConnector Association="QuanLyKhoModel.FK__Material__suppli__0DAF0CB0" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

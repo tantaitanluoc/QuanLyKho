@@ -1,4 +1,5 @@
-﻿using QuanLyKho.ViewModel;
+﻿using QuanLyKho.Model;
+using QuanLyKho.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,8 @@ namespace QuanLyKho.ViewModel
             UserCMD = new RelayCommand<object>(p => true, p => { UserWindow w = new UserWindow(); w.ShowDialog(); });
             ImportCMD = new RelayCommand<object>(p => true, p => { ImportWindow w = new ImportWindow(); w.ShowDialog(); });
             ExportCMD = new RelayCommand<object>(p => true, p => { ExportWindow w = new ExportWindow(); w.ShowDialog(); });
+
+           
         }
     }
 }

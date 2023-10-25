@@ -25,7 +25,7 @@
         >
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding OnLoadedCMD}"/>
+            <i:InvokeCommandAction Command="{Binding OnLoadedCMD}" CommandParameter="{Binding ElementName=mainWindow}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>

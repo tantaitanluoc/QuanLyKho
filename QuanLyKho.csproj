@@ -155,6 +155,7 @@
       <DependentUpon>UserWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Viewmodel\ControlBarViewModel.cs" />
+    <Compile Include="Viewmodel\LoginViewModel.cs" />
     <Compile Include="Viewmodel\MainViewModel.cs" />
     <Page Include="AppUC\UC_ControlBar.xaml">
       <SubType>Designer</SubType>

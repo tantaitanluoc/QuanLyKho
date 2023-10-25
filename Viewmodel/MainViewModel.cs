@@ -23,9 +23,21 @@ namespace QuanLyKho.ViewModel
 
         public MainViewModel()
         {
-            OnLoadedCMD = new RelayCommand<object>(p => true, p => {
-               //LoginWindow loginWindow = new LoginWindow();
-               //loginWindow.ShowDialog();
+            OnLoadedCMD = new RelayCommand<Window>(p => true, p => {
+                if (p == null)
+                    return;
+                p.Hide();
+                LoginWindow loginWindow = new LoginWindow();
+                loginWindow.ShowDialog();
+
+                var loginVM = loginWindow.DataContext as LoginViewModel;
+                if (loginVM == null)
+                    return;
+
+                if (loginVM.Auth)
+                    p.Show();
+                else
+                    p.Close();
             });
 
             UnitCMD = new RelayCommand<object>(p => true, p => { MeasuringUnitWindow w = new MeasuringUnitWindow(); w.ShowDialog(); });

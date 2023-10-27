@@ -124,6 +124,7 @@
     <Compile Include="Model\ImportInfo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Inventory.cs" />
     <Compile Include="Model\Material.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

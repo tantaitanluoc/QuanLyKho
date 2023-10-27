@@ -2,6 +2,7 @@
 using QuanLyKho.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,10 @@ namespace QuanLyKho.ViewModel
         public ICommand ImportCMD { get; set; }
         public ICommand ExportCMD { get; set; }
 
+        private ObservableCollection<Inventory> inventories;
+        public ObservableCollection<Inventory> Inventories { get => inventories; set { inventories = value; OnPropertyChanged(); } }
+
+
         public MainViewModel()
         {
             OnLoadedCMD = new RelayCommand<Window>(p => true, p => {
@@ -35,7 +40,10 @@ namespace QuanLyKho.ViewModel
                     return;
 
                 if (loginVM.Auth)
+                {
                     p.Show();
+                    InventoryLoad();
+                }
                 else
                     p.Close();
             });
@@ -49,6 +57,11 @@ namespace QuanLyKho.ViewModel
             ExportCMD = new RelayCommand<object>(p => true, p => { ExportWindow w = new ExportWindow(); w.ShowDialog(); });
 
            
+        }
+
+        private void InventoryLoad()
+        {
+            Inventories = new ObservableCollection<Inventory>();
         }
     }
 }

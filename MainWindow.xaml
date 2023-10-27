@@ -476,12 +476,12 @@
                             <Separator Margin="5" Style="{StaticResource MaterialDesignDarkSeparator}"></Separator>
                         </Grid>
                         <Grid Grid.Row="2">
-                            <ListView>
+                            <ListView ItemsSource="{Binding Inventories}">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Header="STT"></GridViewColumn>
-                                        <GridViewColumn Header="Tên vật tư"></GridViewColumn>
-                                        <GridViewColumn Header="Lượng tồn kho"></GridViewColumn>
+                                        <GridViewColumn Header="STT" DisplayMemberBinding="{Binding No}"></GridViewColumn>
+                                        <GridViewColumn Header="Tên vật tư" DisplayMemberBinding="{Binding Material.name}"></GridViewColumn>
+                                        <GridViewColumn Header="Lượng tồn kho" DisplayMemberBinding="{Binding Count}"></GridViewColumn>
                                     </GridView>
                                 </ListView.View>
                             </ListView>

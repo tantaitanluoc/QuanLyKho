@@ -1,6 +1,8 @@
 use QuanLyKho
 go
 
+select * from Account
+
 insert into AccountRole(roleDescription) values(N'admin')
 insert into AccountRole(roleDescription) values(N'staff')
 
@@ -16,6 +18,8 @@ insert into Account(displayName,userName,password,roleId) values(
 	N'staff',
 	2
 )
+
+
 
 
 --use master

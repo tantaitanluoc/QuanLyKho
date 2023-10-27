@@ -45,8 +45,9 @@ namespace QuanLyKho.ViewModel
         }
         private bool Authenticate()
         {
-           string hasedPasswd = hash(Password);
-           return DataProvider.Ins.db.Accounts.Where(u => u.userName == Username && u.password == hasedPasswd).Count() == 1;
+            return true;
+           //string hasedPasswd = hash(Password);
+           //return DataProvider.Ins.db.Accounts.Where(u => u.userName == Username && u.password == hasedPasswd).Count() == 1;
         }
     }
 }

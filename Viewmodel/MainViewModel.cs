@@ -62,6 +62,28 @@ namespace QuanLyKho.ViewModel
         private void InventoryLoad()
         {
             Inventories = new ObservableCollection<Inventory>();
+            var materialList = DataProvider.Ins.db.Materials;
+            int accumulate = 1;
+            foreach (var item in materialList)
+            {
+                var imlist = DataProvider.Ins.db.ImportInfoes.Where(e => e.materialId == item.id);
+                var exlist = DataProvider.Ins.db.ExportInfoes.Where(e => e.materialId == item.id);
+
+                int imsum = 0, exsum = 0;
+                try
+                {
+                    imsum = (int)imlist.Sum(e => e.count);
+                    exsum = (int)exlist.Sum(e => e.count);
+                }
+                catch
+                {
+                    // swear
+                }
+
+                Inventories.Add(new Inventory(accumulate, item, imsum - exsum));
+
+                accumulate++;
+            }
         }
     }
 }

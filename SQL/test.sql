@@ -1,10 +1,12 @@
 use QuanLyKho
 go
 
-select * from Account
+select * from Supplier
 
 insert into AccountRole(roleDescription) values(N'admin')
 insert into AccountRole(roleDescription) values(N'staff')
+
+insert into Import(id,importDate) values(N'1',GETDATE())
 
 insert into Account(displayName,userName,password,roleId) values(
 	N'Hoan',
@@ -20,6 +22,11 @@ insert into Account(displayName,userName,password,roleId) values(
 )
 
 
+select * from ImportInfo, Material
+where ImportInfo.materialId = Material.id;
+
+select * from ExportInfo, Material
+where ExportInfo.materialId = Material.id;
 
 
 --use master

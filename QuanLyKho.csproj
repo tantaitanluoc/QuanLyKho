@@ -158,6 +158,7 @@
     <Compile Include="Viewmodel\ControlBarViewModel.cs" />
     <Compile Include="Viewmodel\LoginViewModel.cs" />
     <Compile Include="Viewmodel\MainViewModel.cs" />
+    <Compile Include="Viewmodel\MeasuringUnitViewModel.cs" />
     <Page Include="AppUC\UC_ControlBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

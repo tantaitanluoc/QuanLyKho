@@ -9,10 +9,11 @@
 
 namespace QuanLyKho.Model
 {
+    using QuanLyKho.ViewModel;
     using System;
     using System.Collections.Generic;
     
-    public partial class MeasuringUnit
+    public partial class MeasuringUnit: BaseViewModel
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MeasuringUnit()
@@ -21,9 +22,12 @@ namespace QuanLyKho.Model
         }
     
         public int id { get; set; }
-        public string unit { get; set; }
+
+        private string _unit;
+        
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Material> Materials { get; set; }
+        public string unit { get => _unit; set { _unit = value; OnPropertyChanged(); } }
     }
 }

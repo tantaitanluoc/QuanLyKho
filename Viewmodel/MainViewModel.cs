@@ -77,7 +77,7 @@ namespace QuanLyKho.ViewModel
                 }
                 catch
                 {
-                    // swear
+                    // swearing
                 }
 
                 Inventories.Add(new Inventory(accumulate, item, imsum - exsum));

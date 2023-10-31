@@ -16,7 +16,7 @@
      TextOptions.TextRenderingMode="Auto"
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"
-        DataContext="{StaticResource MainVM}"
+        DataContext="{StaticResource MeasuringUnitVM}"
        ResizeMode="NoResize"
         WindowStyle="None" WindowStartupLocation="CenterScreen"
         >
@@ -40,7 +40,7 @@
                     <TextBox
                         Margin="5"
                         materialDesign:HintAssist.Hint="Tên đơn vị đo"
-                        Text="{Binding unitName, UpdateSourceTrigger=PropertyChanged}"
+                        Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 </Grid>
             </materialDesign:Card>
@@ -90,7 +90,7 @@
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="ID" DisplayMemberBinding="{Binding id}"/>
-                            <GridViewColumn Header="Đơn vị đo" DisplayMemberBinding="{Binding unitName}"/>
+                            <GridViewColumn Header="Đơn vị đo" DisplayMemberBinding="{Binding unit}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
